@@ -1,0 +1,129 @@
+direction: "履约"
+subDirection: "正向"
+taskId: 48
+appName: "fulfillmentcenter"
+---
+direction: "履约"
+subDirection: "逆向"
+taskId: 778
+appName: "corerems"
+---
+direction: "履约"
+subDirection: "服保"
+taskId: 776
+appName: "sltms"
+---
+direction: "履约"
+subDirection: "物流"
+taskId: 917
+appName:
+---
+direction: "履约"
+subDirection: "基础数据"
+taskId: 663
+appName: "fulfillmentinfo"
+---
+direction: "交易链路"
+subDirection: "购物车"
+taskId: 152
+appName: "cartv2"
+---
+direction: "交易链路"
+subDirection: "结算下单"
+taskId: 152
+appName: "checkoutcenter"
+---
+direction: "交易链路"
+subDirection: "订单(ordercenter)"
+taskId: 153
+appName:
+---
+direction: "交易链路"
+subDirection: "订单(orderv2)"
+taskId: 209
+appName:
+---
+direction: "交易链路"
+subDirection: "评价"
+taskId: 624
+appName:
+---
+direction: "商品"
+subDirection: "主链路-单品/主链路-组合"
+taskId: 2
+appName: "itemcenter"
+---
+direction: "商品"
+subDirection: "商品库存"
+taskId: 222
+appName: "inventoryv2"
+---
+direction: "招选搭投"
+subDirection: "会场C端展示"
+taskId: 1112
+appName:
+---
+direction: "招选搭投"
+subDirection: "组件搭建&投放&标签链路"
+taskId: 943
+appName:
+---
+direction: "营销"
+subDirection: "促销"
+taskId: 255
+appName:
+---
+direction: "营销"
+subDirection: "促销"
+taskId: 74
+appName:
+---
+direction: "营销"
+subDirection: "商品抽签"
+taskId: 589
+appName:
+---
+direction: "营销"
+subDirection: "优惠券"
+taskId: 167
+appName:
+---
+direction: "用增"
+subDirection: "会员"
+taskId: 815
+appName:
+---
+direction: "商家"
+subDirection: "专业号入驻"
+taskId: 213
+appName:
+---
+direction: "商家"
+subDirection: "商家版app授权与登录/ark授权与登录"
+taskId: 359
+appName:
+---
+direction: "商家"
+subDirection: "店铺入驻/号店同审"
+taskId: 241
+appName:
+---
+direction: "商家"
+subDirection: "ark品牌品类"
+taskId: 253
+appName:
+---
+direction: "支付结算"
+subDirection: "支付&退款"
+taskId: 210
+appName:
+---
+direction: "支付结算"
+subDirection: "计费&结算"
+taskId: 296
+appName:
+---
+direction: "支付结算"
+subDirection: "商业化账户"
+taskId: 1017
+appName:
