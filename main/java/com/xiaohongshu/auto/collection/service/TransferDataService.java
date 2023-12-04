@@ -76,14 +76,14 @@ public class TransferDataService {
         StringBuilder builder = new StringBuilder("今日周报推送如下，请相关同事注意。");
         for(int i=0;i<resultList.size();i++){
             builder.append("\n>方向:<font color=\"comment\">"+ resultList.get(i).getDirection()+"</font>" +
-                    "      子方向:<font color=\"comment\">"+resultList.get(i).getSubDirection()+"</font>" +
-                    "      ATM通过率:<font color=\"comment\">"+resultList.get(i).getATMPassRate()+"</font>" +
-                    "      ATM场景数:<font color=\"comment\">"+resultList.get(i).getATMCounts()+"</font>"
+                    "      子方向:<font color=\"comment\">"+resultList.get(i).getSubDirection()+"</font>\n" +
+                    "ATM通过率:<font color=\"comment\">"+resultList.get(i).getATMPassRate()+"%</font>" +
+                    "  ATM场景数:<font color=\"comment\">"+resultList.get(i).getATMCounts()+"</font>"
             );
             if(resultList.get(i).getReplayCounts()>=0&&resultList.get(i).getReplayRate()>=0){
                 builder.append(
-                        "      流量回放通过率:<font color=\"comment\">"+resultList.get(i).getReplayRate()+"</font>" +
-                                "      流量回放场景数:<font color=\"comment\">"+resultList.get(i).getReplayCounts()+"</font>"
+                        "   流量回放通过率:<font color=\"comment\">"+resultList.get(i).getReplayRate()+"%</font>" +
+                                "   流量回放场景数:<font color=\"comment\">"+resultList.get(i).getReplayCounts()+"</font>"
                 );
             }
             if(resultList.get(i).isEfficient()){
@@ -92,7 +92,6 @@ public class TransferDataService {
                 builder.append("      卡点有效:<font color=\"warning\">无效@"+resultList.get(i).getPrincipal()+"</font>");
             }
             if((i+1)%10==0||i==resultList.size()-1){
-                builder.delete(builder.length()-2,builder.length());
                 String jsonStr = JSONUtil.toJsonStr(new MarkdownType(builder.toString()));
                 System.out.println(jsonStr);
                 String post = HttpUtil.post(URLProperties.WEBHOOK_URL, jsonStr);
