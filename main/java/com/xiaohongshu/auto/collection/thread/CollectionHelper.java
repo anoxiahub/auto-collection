@@ -71,6 +71,7 @@ public class CollectionHelper {
         result.setReplayCounts(map.getValue());
         result.setDirection(dataInfo.getDirection());
         result.setSubDirection(dataInfo.getSubDirection());
+        result.setPrincipal(dataInfo.getPrincipal());
         return result;
     }
 

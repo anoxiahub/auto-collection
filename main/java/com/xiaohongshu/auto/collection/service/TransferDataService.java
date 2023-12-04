@@ -15,6 +15,7 @@ import com.xiaohongshu.auto.collection.model.pojo.ReplayDTO;
 import com.xiaohongshu.auto.collection.properties.URLProperties;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,26 +71,27 @@ public class TransferDataService {
 
     }
 
+
     public boolean pushData(List<Result> resultList){
         StringBuilder builder = new StringBuilder("今日周报推送如下，请相关同事注意。");
         for(int i=0;i<resultList.size();i++){
             builder.append("\n>方向:<font color=\"comment\">"+ resultList.get(i).getDirection()+"</font>" +
-                    "\n>子方向:<font color=\"comment\">"+resultList.get(i).getSubDirection()+"</font>" +
-                    "\n>ATM通过率:<font color=\"comment\">"+resultList.get(i).getATMPassRate()+"</font>" +
-                    "\n>ATM场景数:<font color=\"comment\">"+resultList.get(i).getATMCounts()+"</font>"
+                    "      子方向:<font color=\"comment\">"+resultList.get(i).getSubDirection()+"</font>" +
+                    "      ATM通过率:<font color=\"comment\">"+resultList.get(i).getATMPassRate()+"</font>" +
+                    "      ATM场景数:<font color=\"comment\">"+resultList.get(i).getATMCounts()+"</font>"
             );
-            if(resultList.get(i).getReplayCounts()<0&&resultList.get(i).getReplayRate()<0){
+            if(resultList.get(i).getReplayCounts()>=0&&resultList.get(i).getReplayRate()>=0){
                 builder.append(
-                        "\n>流量回放通过率:<font color=\"comment\">无此数据</font>" + "\n>流量回放场景数:<font color=\"comment\">无此数据</font>"
-                );
-            }else{
-                builder.append(
-                        "\n>流量回放通过率:<font color=\"comment\">"+resultList.get(i).getReplayRate()+"</font>" +
-                                "\n>流量回放场景数:<font color=\"comment\">"+resultList.get(i).getReplayCounts()+"</font>"
+                        "      流量回放通过率:<font color=\"comment\">"+resultList.get(i).getReplayRate()+"</font>" +
+                                "      流量回放场景数:<font color=\"comment\">"+resultList.get(i).getReplayCounts()+"</font>"
                 );
             }
-            builder.append("\n>卡点有效:<font color=\"comment\">"+(resultList.get(i).isEfficient()?"有效":"无效")+"</font>\n\n");
-            if(i%5==0||i==resultList.size()-1){
+            if(resultList.get(i).isEfficient()){
+                builder.append("      卡点有效:<font color=\"comment\">有效</font>");
+            }else{
+                builder.append("      卡点有效:<font color=\"warning\">无效@"+resultList.get(i).getPrincipal()+"</font>");
+            }
+            if((i+1)%10==0||i==resultList.size()-1){
                 builder.delete(builder.length()-2,builder.length());
                 String jsonStr = JSONUtil.toJsonStr(new MarkdownType(builder.toString()));
                 System.out.println(jsonStr);

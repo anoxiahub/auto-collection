@@ -13,4 +13,6 @@ public class DataInfo {
     private Integer taskId;
 
     private String appName;
+
+    private String principal;
 }

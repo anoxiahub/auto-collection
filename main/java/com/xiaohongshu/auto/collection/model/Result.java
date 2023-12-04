@@ -14,7 +14,7 @@ public class Result {
     private Double replayRate;
     private Long replayCounts;
     private boolean efficient;
-
+    private String principal;
 
     public void setATMPassRate(Double ATMPassRate) {
         this.ATMPassRate = new BigDecimal(ATMPassRate).multiply(new BigDecimal(100)).setScale(2,BigDecimal.ROUND_HALF_DOWN).doubleValue();
