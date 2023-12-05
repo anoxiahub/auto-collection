@@ -73,6 +73,7 @@ public class TransferDataService {
 
 
     public boolean pushData(List<Result> resultList){
+        List<Result> results = new ArrayList<>();
         StringBuilder builder = new StringBuilder("今日周报推送如下，请相关同事注意。");
         for(int i=0;i<resultList.size();i++){
             builder.append("\n>方向:<font color=\"comment\">"+ resultList.get(i).getDirection()+"</font>" +
@@ -90,6 +91,7 @@ public class TransferDataService {
                 builder.append("      卡点有效:<font color=\"comment\">有效</font>");
             }else{
                 builder.append("      卡点有效:<font color=\"warning\">无效@"+resultList.get(i).getPrincipal()+"</font>");
+                results.add(resultList.get(i));
             }
             if((i+1)%10==0||i==resultList.size()-1){
                 String jsonStr = JSONUtil.toJsonStr(new MarkdownType(builder.toString()));
@@ -99,6 +101,21 @@ public class TransferDataService {
                 builder=new StringBuilder();
             }
         }
+        StringBuilder resultBuilder = new StringBuilder("**总结:**\n");
+        for(Result result:results){
+            resultBuilder.append("\n><font color=\"warning\">【重要提醒】</font>");
+            if(result.getATMPassRate()<95&&result.getReplayRate()>0&&result.getReplayRate()<95){
+                resultBuilder.append("方向:<font color=\"warning\">"+result.getDirection()+"</font>,子方向:<font color=\"warning\">"+result.getSubDirection()+"</font>,ATM通过率和流量回放通过率低于阈值,当前：<font color=\"warning\">"+result.getATMPassRate()+"</font>%,<font color=\"warning\">"+result.getReplayRate()+"%</font>,需持续观察<font color=\"warning\">@"+result.getPrincipal()+"</font>");
+            }else if(result.getATMPassRate()<95){
+                resultBuilder.append("方向:<font color=\"warning\">"+result.getDirection()+"</font>,子方向:<font color=\"warning\">"+result.getSubDirection()+"</font>,ATM通过率低于阈值,当前："+result.getATMPassRate()+"%需持续观察<font color=\"warning\">@"+result.getPrincipal()+"</font>");
+            }else{
+                resultBuilder.append("方向:<font color=\"warning\">"+result.getDirection()+"</font>,子方向:<font color=\"warning\">"+result.getSubDirection()+"</font>,流量回放通过率低于阈值,当前："+result.getATMPassRate()+"%需持续观察<font color=\"warning\">@"+result.getPrincipal()+"</font>");
+            }
+        }
+        String jsonStr = JSONUtil.toJsonStr(new MarkdownType(resultBuilder.toString()));
+        System.out.println(jsonStr);
+        String post = HttpUtil.post(URLProperties.WEBHOOK_URL, jsonStr);
+        System.out.println(post);
         return true;
     }
 
