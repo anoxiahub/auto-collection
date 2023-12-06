@@ -2,10 +2,8 @@ package com.xiaohongshu.auto.collection.model;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class DataInfo {
+public class DataInfoBO {
 
     private String direction;
     private String subDirection;

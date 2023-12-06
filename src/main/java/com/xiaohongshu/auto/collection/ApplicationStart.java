@@ -1,20 +1,19 @@
 package com.xiaohongshu.auto.collection;
 
 
-import com.xiaohongshu.auto.collection.thread.CollectionHelper;
-import com.xiaohongshu.auto.collection.thread.FileReadHelper;
-
+import com.xiaohongshu.auto.collection.thread.AutomationDataCron;
 
 public class ApplicationStart {
 
     public static void main(String[] args) {
-        FileReadHelper.getInstance().start();
+        AutomationDataCron automationDataCron = new AutomationDataCron();
+        automationDataCron.FileReadExecute();
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        CollectionHelper.getInstance().start();
+        automationDataCron.CollectionExecute();
 
     }
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class ReplayCollectionDTO {
+public class ReplayCollectionQuery {
     private String configId;
     private String appName;
     private String configName;

@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class Result {
+public class CollectionResultBO {
     private String direction;
     private String subDirection;
     private Double ATMPassRate;
@@ -26,6 +26,7 @@ public class Result {
     }
 
     public boolean isEfficient() {
-        return this.ATMPassRate>95&&(this.replayRate>95||this.replayRate<0);
+        return (this.ATMPassRate>95||this.ATMPassRate<0||this.ATMCounts==0)&&(this.replayCounts==0||this.replayRate>95||this.replayRate<0);
+
     }
 }

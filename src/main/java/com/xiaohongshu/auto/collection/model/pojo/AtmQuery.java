@@ -3,7 +3,7 @@ package com.xiaohongshu.auto.collection.model.pojo;
 import lombok.Data;
 
 @Data
-public class AtmDTO {
+public class AtmQuery {
     private Integer taskId;
     private Double passRate;
     private Long excuteCounts;
@@ -14,4 +14,11 @@ public class AtmDTO {
     private Integer triggerType;
     private Integer manualType;
     private Integer debugType;
+
+    public AtmQuery(){}
+
+    public AtmQuery(Double passRate,Long excuteCounts){
+        this.passRate=passRate;
+        this.excuteCounts = excuteCounts;
+    }
 }

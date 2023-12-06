@@ -3,7 +3,7 @@ package com.xiaohongshu.auto.collection.model.pojo;
 import lombok.Data;
 
 @Data
-public class ReplayDTO {
+public class ReplayQuery {
 
     private String appName;
 
