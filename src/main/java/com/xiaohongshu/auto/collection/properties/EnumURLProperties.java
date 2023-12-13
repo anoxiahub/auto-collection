@@ -14,8 +14,7 @@ public enum EnumURLProperties {
 
     REDREPLAY_URL(3,"https://redreplay.devops.xiaohongshu.com/api/replayTask/generalReport?replayTaskId="),
 
-    WEBHOOK_URL(4,"https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=79920ddc-0091-4a8b-93c9-4048e2a1be5c");
-
+    WEBHOOK_URL(4,"https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=17592f9e-5dd7-4700-a6c2-164a8cc3dfce");
     @Getter
     private String url;
 

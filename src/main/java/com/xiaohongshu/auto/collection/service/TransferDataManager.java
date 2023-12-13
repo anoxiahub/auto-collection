@@ -103,7 +103,7 @@ public class TransferDataManager {
         for(CollectionResultBO collectionResultBO : collectionResultBOS){
             resultBuilder.append("\n><font color=\"warning\">【重要提醒】</font>");
             if(collectionResultBO.getATMPassRate()>=0&&collectionResultBO.getATMPassRate()<95&& collectionResultBO.getReplayRate()>=0&& collectionResultBO.getReplayRate()<95){
-                resultBuilder.append("方向:<font color=\"warning\">"+ collectionResultBO.getDirection()+"</font>,子方向:<font color=\"warning\">"+ collectionResultBO.getSubDirection()+"</font>,ATM通过率和流量回放通过率低于阈值,当前：<font color=\"warning\">"+ collectionResultBO.getATMPassRate()+"</font>%,<font color=\"warning\">"+ collectionResultBO.getReplayRate()+"%</font>,请及时维护<font color=\"warning\">@"+ collectionResultBO.getPrincipal()+"</font>");
+                resultBuilder.append("方向:<font color=\"warning\">"+ collectionResultBO.getDirection()+"</font>,子方向:<font color=\"warning\">"+ collectionResultBO.getSubDirection()+"</font>,ATM通过率和流量回放通过率低于阈值,当前："+ collectionResultBO.getATMPassRate()+"%,<font color=\"warning\">"+ collectionResultBO.getReplayRate()+"%</font>,请及时维护<font color=\"warning\">@"+ collectionResultBO.getPrincipal()+"</font>");
             }else if(collectionResultBO.getATMPassRate()<95&&collectionResultBO.getATMPassRate()>=0){
                 resultBuilder.append("方向:<font color=\"warning\">"+ collectionResultBO.getDirection()+"</font>,子方向:<font color=\"warning\">"+ collectionResultBO.getSubDirection()+"</font>,ATM通过率低于阈值,当前："+ collectionResultBO.getATMPassRate()+"%,请及时维护<font color=\"warning\">@"+ collectionResultBO.getPrincipal()+"</font>");
             }else{
